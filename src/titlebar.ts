@@ -221,7 +221,7 @@ export class Titlebar extends Themebar {
 			this.title.style.cursor = 'default';
 		}
 
-		this.updateTitle();
+		this.updateTitle(document.title);
 		this.setHorizontalAlignment(this._options.titleHorizontalAlignment);
 
 		// Maximize/Restore on doubleclick
@@ -433,15 +433,9 @@ export class Titlebar extends Themebar {
    * You can use this method if change the content of `<title>` tag on your html.
    * @param title The title of the title bar and document.
    */
-	updateTitle(title?: string) {
+  updateTitle(title: string) {
 		if (this.title) {
-			if (title) {
-				document.title = title;
-			} else {
-				title = document.title;
-			}
-
-			this.title.innerText = title;
+			this.title.innerHTML = title;
 		}
 	}
 
